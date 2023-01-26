@@ -13,6 +13,7 @@ class Storage:
         self.head = None
         self.items = 0
 
+    # add item to the front of the list and increment the items counter
     def push(self, data):
         newNode = Node(data)
         if not self.head:
@@ -22,6 +23,7 @@ class Storage:
             self.head = newNode
         self.items += 1
 
+    # remove the item at the front of the list while returning the data it contained and decrement the items counter
     def pop(self):
         if not self.head:
             return None
@@ -30,14 +32,17 @@ class Storage:
         self.items -= 1
         return data
 
+    # return the data of the current head of the list
     def peek(self):
         return self.head.data
 
+    # function to check if a linked list is empty or not
     def isempty(self):
         if not self.items:
             return True
         return False
 
+    # function to swap data between nodes at index i and j
     def swap(self, i, j):
         if self.items <= i or self.items <= j and i is not j:
             return False

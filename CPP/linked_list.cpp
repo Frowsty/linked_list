@@ -28,6 +28,7 @@ public:
     Storage() = default;
     ~Storage() = default;
 
+    // add item to the front of the list
     void push(int data)
     {
         Node* newNode = new Node(data);
@@ -43,6 +44,7 @@ public:
         index++;
     }
 
+    // remove item from the front of the list and return the value of said item
     bool pop(int &data)
     {
         if (!this->head)
@@ -58,6 +60,7 @@ public:
         return data;
     }
 
+    // return the data of the current head of the list
     bool peek(int &data)
     {
         if (!this->head)
@@ -67,6 +70,8 @@ public:
         return data;
     }
 
+    // checks if the linked list if empty or not by checking if we have a head object in the list
+    // if a head is present the list is not empty, a list cannot have any items without the head
     bool isEmpty()
     {
         if (!this->head)
@@ -74,6 +79,7 @@ public:
         return false;
     }
 
+    // Not necessary for the assignment but this function will loop the linked list and print the data
     bool printList()
     {
         if (!this->head)
@@ -91,6 +97,8 @@ public:
         return true;
     }
 
+    // This function will find the nodes of which index we want to swap
+    // It then swaps the data between the nodes and returns true
     bool swap(int i, int j)
     {
         if (this->index <= i || this->index <= j && i != j)
@@ -117,6 +125,13 @@ public:
         node1->data = node2->data;
         node2->data = tempNode.data;
 
+        delete temp;
+
         return true;
     }
 };
+
+int main()
+{
+    return 0;
+}
