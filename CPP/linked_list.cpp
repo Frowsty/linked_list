@@ -120,21 +120,3 @@ public:
         return true;
     }
 };
-
-int main()
-{
-    int data;
-    Storage list;
-    list.push(1000);
-    list.push(52);
-    list.push(132);
-    list.push(92);
-    list.push(9352);
-
-    list.swap(2, 4);
-
-    list.printList();
-
-    return 0;
-}
-
