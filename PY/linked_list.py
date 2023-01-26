@@ -62,6 +62,4 @@ class Storage:
         node1.data = node2.data
         node2.data = temp
 
-        print(node1.data + " : " + node2.data)
-
         return True
