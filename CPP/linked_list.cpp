@@ -93,66 +93,34 @@ public:
 
     bool swap(int i, int j)
     {
-        if (this->index < i || this->index < j && i != j)
+        if (this->index <= i || this->index <= j && i != j)
             return false;
 
-        auto temp = this->head;
-
         Node* node1 = nullptr;
-        Node* prevNode1 = nullptr;
         Node* node2 = nullptr;
-        Node* prevNode2 = nullptr;
+
+        auto temp = this->head;
 
         int k = 0;
         while (temp != nullptr)
         {
-            if (k - i == -1 || k - i == 0)
-            {
-                if (k != 0 && (prevNode1 == nullptr && node1 == nullptr))
-                {
-                    prevNode1 = temp;
-                    node1 = prevNode1->next;
-                }
-                else
-                    node1 = temp;
-            }
-            else if (k - j == -1 || k - j == 0)
-            {
-
-                if (k != 0 && (prevNode2 == nullptr && node2 == nullptr))
-                {
-                    prevNode2 = temp;
-                    node2 = prevNode2->next;
-                }
-                else
-                    node2 = temp;
-            }
+            if (k == i)
+                node1 = temp;
+            if (k == j)
+                node2 = temp;
 
             k++;
             temp = temp->next;
         }
 
-        auto temp2 = *node2;
-       
-        if (prevNode1 != nullptr)
-            prevNode1->next = node2;
-        node2->next = node1->next;
+        auto tempNode = *node1;
+        node1->data = node2->data;
+        node2->data = tempNode.data;
 
-        if (prevNode2 != nullptr)
-            prevNode2->next = node1;
-        node1->next = temp2.next;
-
-        if (prevNode1 == nullptr)
-            this->head = node2;
-        if (prevNode2 == nullptr)
-            this->head = node1;
-
-
-        std::cout << "Swapped " << node1->data << " with " << node2->data << "\n";
         return true;
     }
 };
-/*
+
 int main()
 {
     int data;
@@ -163,10 +131,10 @@ int main()
     list.push(92);
     list.push(9352);
 
-    list.swap(0, 4);
+    list.swap(2, 4);
 
     list.printList();
 
     return 0;
 }
-*/
+

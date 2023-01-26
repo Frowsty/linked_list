@@ -36,4 +36,32 @@ class Storage:
     def isempty(self):
         if not self.items:
             return True
-        return False 
+        return False
+
+    def swap(self, i, j):
+        if self.items <= i or self.items <= j and i != j:
+            return False
+
+        node1 = None
+        node2 = None
+
+        temp = self.head
+
+        k = 0
+        while temp != None: 
+            if k == i:
+                node1 = temp
+            if k == j:
+                node2 = temp
+
+            k += 1
+            temp = temp.next
+
+
+        temp = node1.data
+        node1.data = node2.data
+        node2.data = temp
+
+        print(node1.data + " : " + node2.data)
+
+        return True
