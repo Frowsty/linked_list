@@ -39,7 +39,7 @@ class Storage:
         return False
 
     def swap(self, i, j):
-        if self.items <= i or self.items <= j and i != j:
+        if self.items <= i or self.items <= j and i is not j:
             return False
 
         node1 = None
